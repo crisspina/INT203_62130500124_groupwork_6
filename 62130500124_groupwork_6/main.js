@@ -3,14 +3,14 @@ const constraints = {
     firstname: {
         presence: true,
         format:{
-            pattern: "[a-z]+",
+            pattern: "[a-zA-Z]+",
             message: "can only contain a-z "
         }
     },
     lastname: {
         presence: true,
         format:{
-            pattern: "[a-z]+",
+            pattern: "[a-zA-Z]+",
             message: "can only contain a-z "
         }
     },
