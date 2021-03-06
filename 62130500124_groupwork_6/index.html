@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basic Vue Js - HelloWorld App</title>
+
+  <!-- https://google.github.io/material-design-icons/#icon-font-for-the-web -->
+  <!-- Using via Google Web Fonts -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+  <!-- https://tailwindcss.com/docs/installation -->
+  <!-- Using Tailwind via CDN -->
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+
+  <!-- validate -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
+
+  <!-- https://v3.vuejs.org/guide/installation.html#release-notes -->
+  <!-- Vue CDN -->
+  <script src="https://unpkg.com/vue@next"></script>
+
+</head>
+
+<body class="bg-pink-50">
+  <div id="app" >
+    <div class="grid grid-cols-2  ">
+      <!-- profile widget -->
+      <div class="container mt-10 ml-20 ">
+        <div class="d-flex align-items-center">
+          <div class="ml-3 w-11/12 ">
+            <h1 class="text-2xl pt-4 pb-4 font-bold ">My Profile</h1>
+            <h4 class=" font-semibold">Firstname: {{firstname}} </h4>
+            <h4 class=" font-semibold">Lastname:{{lastname}}</h4>
+            <h4 class=" font-semibold">Gender: {{gender}} </h4>
+            <h4 class=" font-semibold">Age: {{age}} </h4>
+            <h4 class=" font-semibold">Phone: {{phone}} </h4>
+            <h4 class=" font-semibold">Email: {{email}} </h4>
+          </div>
+        </div>
+      </div>
+      <div>
+        <!-- form -->
+        <form @submit.prevent="checkForm">
+          <div class="container w-11/12 pr-20 mt-10 border rounded-lg bg-blue-100">
+            <h1 class="text-2xl pt-4 pb-4 ml-10  font-bold">Profile Form</h1>
+            <p v-if="errors" class="text-red-500">
+              <ul>
+                <li v-for="error in errors" class="text-red-500 ml-10">{{ error }}</li>
+              </ul>
+            </p>
+            <div class="grid grid-cols-2 gap-4">
+              <!-- firstname label -->
+              <div class="flex flex-col">
+                <label for="firstname" class="text-sm leading-7 text-gray-600 ml-10">Firstname</label>
+                <input type="text" id="firstname" v-model.trim.lazy="firstname" name="firstname"
+                  class="bg-gray-100 rounded px-4 py-2 mb-4 ml-10">
+              </div>
+              <!-- lastname label -->
+              <div class="flex flex-col">
+                <label for="lastname" class="text-sm leading-7 text-gray-600 ml-10">Lastname</label>
+                <input type="text" id="lastname" v-model.trim.lazy="lastname" name="lastname"
+                  class="bg-gray-100 rounded px-4 py-2 mb-4 ml-10">
+              </div>
+            </div>
+            <!-- Gender -->
+            <div class="grid grid-cols-2 gap-4">
+              <div class="flex flex-col">
+                <label class="text-sm leading-7 text-gray-600 ml-10">Gender</label>
+                <div class="flex flex-row pt-2 space-x-2 ml-10">
+                  <input type="radio" id="Male" v-model="gender" name="gender" value="M"
+                    class="bg-gray-100 rounded px-4 py-2 mb-4">
+                  <label for="Male">M</label>
+                  <input type="radio" id="Female" v-model="gender" name="gender" value="F"
+                    class="bg-gray-100 rounded px-4 py-2 mb-4">
+                  <label for="Female">F</label>
+                </div>
+              </div>
+              <!-- Age -->
+              <div class="flex flex-col">
+                <label for="age" class="text-sm leading-7 text-gray-600 ml-10">Age</label>
+                <input type="text" id="age" v-model.trim.lazy="age" name="age"
+                  class="bg-gray-100 rounded px-4 py-2 mb-4 ml-10">
+              </div>
+            </div>
+            <!-- phone number -->
+            <div class="flex flex-col col-span-2">
+              <label for="phone" class="text-sm leading-7 text-gray-600 ml-10">Phone Number</label>
+              <input type="text" id="phone" v-model="phone" name="phone" class=" ml-10 bg-gray-100 rounded px-4 py-2 mb-4">
+            </div>
+            <!-- email -->
+            <div class="flex flex-col col-span-2">
+              <label for="email" class="text-sm leading-7 text-gray-600 ml-10 ">Email</label>
+              <input type="text" id="email" v-model.trim.lazy="email" name="email"
+                class="bg-gray-100 rounded px-4 py-2 mb-4 ml-10">
+            </div>
+
+            <!-- submit button -->
+            <div>
+              <input type="submit" value="Submit"
+                class="px-8 py-2 ml-10 mb-4 text-white bg-blue-500 rounded-lg hover:bg-green-600 focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2">
+            </div>
+          </div>
+        </form>
+      </div>
+
+
+      <!-- my main.js -->
+      <script src="/main.js"></script>
+    </div>
+
+
+</body>
